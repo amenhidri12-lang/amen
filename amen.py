@@ -2,7 +2,6 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-import plotly.graph_objects as go
 
 # إعدادات صفحة التطبيق
 st.set_page_config(page_title="Advanced EMA & RSI Trading Simulator", layout="wide")
@@ -45,7 +44,10 @@ fig = go.Figure()
 fig.add_trace(go.Scatter(x=df['date'], y=df['close'], name='السعر (Close)', line=dict(color='blue')))
 fig.add_trace(go.Scatter(x=df['date'], y=df['ema_fast'], name=f'EMA {ema_fast}', line=dict(color='orange')))
 fig.add_trace(go.Scatter(x=df['date'], y=df['ema_slow'], name=f'EMA {ema_slow}', line=dict(color='green')))
-st.plotly_chart(fig, use_container_width=True)
+# عرض الرسوم البيانية البسيطة بدون مشاكل
+st.subheader("📈 الرسم البياني للأسعار والمتوسطات المتحركة")
+st.line_chart(df.set_index('date')[['close']])
+
 
 # محاكاة النتائج والأداء
 st.subheader("📊 ملخص نتائج التداول التجريبي")
