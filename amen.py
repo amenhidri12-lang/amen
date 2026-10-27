@@ -40,10 +40,6 @@ df.loc[(df['ema_fast'] < df['ema_slow']) & (df['rsi'] > 30), 'signal'] = -1 # ب
 
 # عرض الرسوم البيانية للسعر والمؤشرات
 st.subheader("📈 الرسم البياني للأسعار والمتوسطات المتحركة")
-fig = go.Figure()
-fig.add_trace(go.Scatter(x=df['date'], y=df['close'], name='السعر (Close)', line=dict(color='blue')))
-fig.add_trace(go.Scatter(x=df['date'], y=df['ema_fast'], name=f'EMA {ema_fast}', line=dict(color='orange')))
-fig.add_trace(go.Scatter(x=df['date'], y=df['ema_slow'], name=f'EMA {ema_slow}', line=dict(color='green')))
 # عرض الرسوم البيانية البسيطة بدون مشاكل
 st.subheader("📈 الرسم البياني للأسعار والمتوسطات المتحركة")
 st.line_chart(df.set_index('date')[['close']])
